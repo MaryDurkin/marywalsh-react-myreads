@@ -22,18 +22,15 @@ state={
     })
   }
 
-/*
-changeShelf = (book, newShelf) => {
-  this.setState((state) => ({
-    books: state.books.map(b => {
-      if (b.id === book.id){
-        b.shelf = newShelf
-      }
-    })
-  }))
+
+updateShelf = (book, newShelf) => {
+  const updatedBookList = this.state.books.map(b => { if (b.id === book.id && b.shelf !== newShelf)
+    {  b.shelf = newShelf  }else{ b.shelf}
+    return b })
+  this.setState({
+    books: updatedBookList
+  })
 }
-*/
-// changeShelf(book[0].id, "Read") figure out this syntax later
   render() {
     /* use the following to check the JSON retruned from the call
     * remember that API calls should be wrapped in a promise and
@@ -69,7 +66,7 @@ changeShelf = (book, newShelf) => {
             <div className="list-books-title">
               <h1>MyReads</h1>
             </div>
-            <ListBooks bookList={books}/>
+            <ListBooks bookList={books} updateShelf={this.updateShelf}/>
             <div className="open-search">
               <a onClick={() => this.setState({ showSearchPage: true })}>Add a book</a>
             </div>

@@ -9,12 +9,12 @@ class ListBooks extends React.Component {
 
   render (){
 
-    const { bookList } = this.props
+    const { bookList, updateShelf } = this.props
     return (
       <div className="list-books-content">
-        <BookShelf shelfTitle="currentlyReading" formattedTitle="Currently Reading" bookList={bookList} />
-        <BookShelf shelfTitle="wantToRead" formattedTitle="Want To Read" bookList={bookList} />
-        <BookShelf shelfTitle="read" formattedTitle="Read" bookList={bookList} />
+        <BookShelf shelfTitle="currentlyReading" formattedTitle="Currently Reading" bookList={bookList} updateShelf={updateShelf} />
+        <BookShelf shelfTitle="wantToRead" formattedTitle="Want To Read" bookList={bookList} updateShelf={updateShelf}/>
+        <BookShelf shelfTitle="read" formattedTitle="Read" bookList={bookList} updateShelf={updateShelf}/>
       </div>
     )
   }
