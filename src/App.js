@@ -30,6 +30,7 @@ updateShelf = (book, newShelf) => {
   this.setState({
     books: updatedBookList
   })
+  BooksAPI.update(book, newShelf)
 }
   render() {
     /* use the following to check the JSON retruned from the call

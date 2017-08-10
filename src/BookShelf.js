@@ -6,7 +6,8 @@ class BookShelf extends React.Component {
   static propTypes = {
     bookList: PropTypes.array.isRequired,
     shelfTitle: PropTypes.string.isRequired,
-    formattedTitle: PropTypes.string.isRequired
+    formattedTitle: PropTypes.string.isRequired,
+    updateShelf: PropTypes.func.isRequired
   }
 
 
