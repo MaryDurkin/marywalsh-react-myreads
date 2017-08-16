@@ -4,7 +4,8 @@ import BookShelf from './BookShelf'
 
 class ListBooks extends React.Component {
  static propTypes = {
-    bookList: PropTypes.array.isRequired
+    bookList: PropTypes.array.isRequired,
+    updateShelf: PropTypes.func.isRequired
   }
 
   render (){

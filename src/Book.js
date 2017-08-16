@@ -17,11 +17,17 @@ class Book extends React.Component {
   }
 
   render () {
-    const { book, updateShelf } = this.props
+    const { book } = this.props
+    let bookCover = ( //use placeholder if no image is available
+          book.imageLinks
+          ? book.imageLinks.thumbnail
+          : "http://via.placeholder.com/128x193?text=cover+not+available"
+    )
     return (
       <div className="book">
         <div className="book-top">
-          <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.thumbnail})` }}></div>
+
+          <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${bookCover})` }}></div>
           <div className="book-shelf-changer">
             <select onChange={this.handleChange} value='none'>
               <option value="none" disabled>Move to...</option>
@@ -33,12 +39,14 @@ class Book extends React.Component {
           </div>
         </div>
         <div className="book-title">{book.title}</div>
-        <div className="book-authors">{book.authors[0]}</div>
+        <div className="book-authors">
+          { book.authors && (book.authors.map(author =>
+            <div key={author}>{author}</div>
+          ))}
+        </div>
       </div>
     )
   }
 }
 
 export default Book
-// mw  - note authors is an array - check how to render more than one
-//<div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imagelinks.thumbnail})` }}></div>
