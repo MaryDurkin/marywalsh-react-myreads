@@ -26,6 +26,7 @@ state={
 
 
 updateShelf = (book, newShelf) => {
+  // test if book is in state, if not add to state
   const updatedBookList = this.state.books.map(b => { if (b.id === book.id && b.shelf !== newShelf)
     {  b.shelf = newShelf  }
     return b })
