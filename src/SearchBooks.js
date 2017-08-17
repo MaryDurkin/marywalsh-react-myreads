@@ -26,8 +26,16 @@ class SearchBooks extends React.Component {
       BooksAPI.search(query, 5).then(results => {
         // catch API errors
         if (typeof results === 'undefined' || results.error) return
-        console.log( "results ", results)
-        this.setState({searchResults: results, query: query})})
+        //console.log( "results ", results)
+
+        // add shelf to returned objects with the initial value of 'none'
+        for (const book of results){
+          book.shelf = 'none'
+        }
+
+        //console.log("shelf added ? ", results)
+        this.setState({searchResults: results, query: query})
+      })
     }
   }
 

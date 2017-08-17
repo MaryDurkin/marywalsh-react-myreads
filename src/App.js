@@ -26,14 +26,28 @@ state={
 
 
 updateShelf = (book, newShelf) => {
-  // test if book is in state, if not add to state
-  const updatedBookList = this.state.books.map(b => { if (b.id === book.id && b.shelf !== newShelf)
+
+  let updatedBookList
+  let alreadyOnShelf = false
+
+  updatedBookList = this.state.books.map(b => { if (b.id === book.id && b.shelf !== newShelf)
     {  b.shelf = newShelf  }
     return b })
+  // test if book is in state, if not add to state
+ for (const b in updatedBookList){
+    if (b.id === book.id){
+      alreadyOnShelf = true
+      break
+    }
+  }
+  if (!alreadyOnShelf) {
+    updatedBookList.push(book)
+  }
   this.setState({
     books: updatedBookList
   })
   BooksAPI.update(book, newShelf)
+  this.componentWillMount()
 }
   render() {
     /* use the following to check the JSON retruned from the call
