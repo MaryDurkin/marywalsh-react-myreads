@@ -19,9 +19,9 @@ render () {
     <div className="bookshelf">
       <h2 className="bookshelf-title">{formattedTitle}</h2>
       <div className="bookshelf-books" >
-        <ol className="books-grid" >
-          { currentShelf.map((book) =>(
-            <li key={book.title} ><Book book={ book} updateShelf={updateShelf}/></li>
+        <ol className="books-grid" key={shelfTitle}>
+          { currentShelf.map((book, index) =>(
+            <li key={index} ><Book book={ book} updateShelf={updateShelf}/></li>
           ))}
 
         </ol>

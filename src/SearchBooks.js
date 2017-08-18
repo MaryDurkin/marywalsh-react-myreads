@@ -2,7 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import * as BooksAPI from './BooksAPI'
 import Book from './Book'
-import BookShelf from './BookShelf'
 import './App.css'
 
 class SearchBooks extends React.Component {
@@ -18,7 +17,6 @@ class SearchBooks extends React.Component {
   updateQuery = (query) => {
 
     query = query.trim()
-    console.log(query)
     if (query===''){
       this.setState({searchResults: [], query: query})
     } else

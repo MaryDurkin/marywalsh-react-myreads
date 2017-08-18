@@ -11,7 +11,7 @@ class Book extends React.Component {
   handleChange = (e) => {
     const { book, updateShelf } = this.props
     let newShelf = e.target.value
-    if (newShelf !== "none" && newShelf !== "remove"){ //take "remove" later
+    if (newShelf !== "none") {
       updateShelf(book, newShelf)
     }
   }
