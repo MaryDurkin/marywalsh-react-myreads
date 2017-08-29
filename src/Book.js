@@ -1,6 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-
+/*
+* this is the lowest level componet
+* it renders a book object with its shelf selector
+* and calls updateShelf which is passed as a prop from App.js through
+* the ListBooks and BookShelf components
+*/
 class Book extends React.Component {
 
   static propTypes = {
@@ -26,7 +31,6 @@ class Book extends React.Component {
     return (
       <div className="book">
         <div className="book-top">
-
           <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${bookCover})` }}></div>
           <div className="book-shelf-changer">
             <select onChange={this.handleChange} value='none'>

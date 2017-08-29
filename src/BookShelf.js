@@ -2,6 +2,13 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Book from './Book'
 
+/*
+* this component displays a shelf of books
+* bookList, shelfTitle and formattedTitle are passed as props
+* updateShelf is passed as a prop to Book
+*/
+
+
 class BookShelf extends React.Component {
   static propTypes = {
     bookList: PropTypes.array.isRequired,
@@ -9,7 +16,6 @@ class BookShelf extends React.Component {
     formattedTitle: PropTypes.string.isRequired,
     updateShelf: PropTypes.func.isRequired
   }
-
 
 render () {
 

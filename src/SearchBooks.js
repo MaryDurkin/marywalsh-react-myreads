@@ -4,6 +4,13 @@ import * as BooksAPI from './BooksAPI'
 import Book from './Book'
 import './App.css'
 
+/*
+* This component initial displays a blank (except for the placeholder) search package
+* when the user types in a query, books are retreived using BooksAPI.search
+* a 'shelf' is added to the book object
+* the books are then displayed using Book
+*/
+
 class SearchBooks extends React.Component {
 
   static propTypes = {
@@ -21,11 +28,12 @@ class SearchBooks extends React.Component {
       this.setState({searchResults: [], query: query})
     } else
     {
+      // get the books frm the backend
       BooksAPI.search(query, 20).then(results => {
         // catch API errors
         if (typeof results === 'undefined' || results.error) return
 
-        // add shelf to returned objects with the initial value of 'none'
+        // add shelf to returned books with the initial value of 'none'
         for (const book of results){
           book.shelf = 'none'
         }

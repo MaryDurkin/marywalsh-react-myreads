@@ -2,6 +2,14 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import BookShelf from './BookShelf'
 
+/*
+* this component lists all the books
+* currently selected
+* bookList is received as prop
+* updateShelf is received as prop, passed through
+* to BookShelf and ultimately to Book
+*/
+
 class ListBooks extends React.Component {
  static propTypes = {
     bookList: PropTypes.array.isRequired,
@@ -9,7 +17,6 @@ class ListBooks extends React.Component {
   }
 
   render (){
-
     const { bookList, updateShelf } = this.props
     return (
       <div className="list-books-content">

@@ -10,13 +10,17 @@ class BooksApp extends React.Component {
 state={
     books: []
   }
-
+/* */
   componentWillMount() {
     BooksAPI.getAll().then(books => {
       this.setState({ books: books })
     })
   }
-
+/*
+* this function puts the book on the correct shelf,
+* updates the backend with BooksAPI.update
+* and calls setState to update state.books
+*/
   updateShelf = (book, newShelf) => {
   let alreadyOnShelf = false
   let updatedBookList = this.state.books
@@ -45,7 +49,6 @@ state={
     }
 
     render() {
-
       const { books } = this.state
       return (
         <div className="app">
