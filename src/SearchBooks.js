@@ -13,13 +13,20 @@ import './App.css'
 
 class SearchBooks extends React.Component {
 
+/*
+* shelfBooks is a copy , used to compare with the search results
+* so we can update searchResults with the correct shelf
+*/
+
   static propTypes = {
-    updateShelf: PropTypes.func.isRequired
+    updateShelf: PropTypes.func.isRequired,
+    shelfBooks: PropTypes.array.isRequired
   }
 
   state = { query: '',
             searchResults: []
           }
+
 
   updateQuery = (query) => {
 
@@ -28,17 +35,28 @@ class SearchBooks extends React.Component {
       this.setState({searchResults: [], query: query})
     } else
     {
-      // get the books frm the backend
+      // get the books from the backend
       BooksAPI.search(query, 20).then(results => {
         // catch API errors
         if (typeof results === 'undefined' || results.error) return
 
-        // add shelf to returned books with the initial value of 'none'
         for (const book of results){
-          book.shelf = 'none'
+          //check if book is already on the bookshelf
+          for (const b of this.props.shelfBooks){
+            // if it is, update the search results with the correct shelf
+            if (b.id === book.id) {
+              book.shelf = b.shelf
+              break
+            }
+            else {
+            // if it isn't on the book shelf, set self to 'none'
+              book.shelf = "none"
+            }
+          }
         }
 
         this.setState({searchResults: results, query: query})
+
       })
     }
   }
